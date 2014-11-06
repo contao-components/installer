@@ -1,6 +1,10 @@
 Contao components installer
 ===========================
 
+[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/build.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
+[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/quality-score.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
+[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/coverage.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
+
 Contao is an Open Source PHP Content Management System for people who want a
 professional website that is easy to maintain. Visit the [project website][1]
 for more information.
@@ -24,7 +28,7 @@ To create a [Contao component][2], add the following to your `composer.json`:
     "type": "contao-component",
     "license": "LGPL-3.0+"
     "require": {
-        "contao-components/installer": "dev-master"
+        "contao-components/installer": "~1.0"
     }
 }
 ```
