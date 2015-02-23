@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * This file is part of the Contao components installer.
  *
  * Copyright (c) 2005-2015 Leo Feyer
  *

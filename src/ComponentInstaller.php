@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * This file is part of the Contao components installer.
  *
  * Copyright (c) 2005-2015 Leo Feyer
  *
@@ -16,7 +16,7 @@ use Composer\Package\PackageInterface;
 /**
  * Overrides the install path for Contao components.
  *
- * @author Leo Feyer <https://contao.org>
+ * @author Leo Feyer <https://github.com/leofeyer>
  */
 class ComponentInstaller extends LibraryInstaller
 {

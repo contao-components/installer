@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * This file is part of the Contao components installer.
  *
  * Copyright (c) 2005-2015 Leo Feyer
  *
@@ -19,7 +19,7 @@ use Contao\Composer\ComponentInstaller;
 /**
  * Tests the ComponentInstaller class.
  *
- * @author Leo Feyer <https://contao.org>
+ * @author Leo Feyer <https://github.com/leofeyer>
  */
 class ComponentInstallerTest extends \PHPUnit_Framework_TestCase
 {
