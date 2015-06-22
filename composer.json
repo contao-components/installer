@@ -14,8 +14,9 @@
         "composer-plugin-api": "~1.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.5",
-        "composer/composer": "~1.0"
+        "composer/composer": "~1.0",
+        "fabpot/php-cs-fixer": "~1.8",
+        "phpunit/phpunit": "~4.5"
     },
     "autoload": {
         "psr-4": {
@@ -24,5 +25,7 @@
     },
     "extra": {
         "class": "Contao\\Composer\\ComponentInstaller"
-    }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }

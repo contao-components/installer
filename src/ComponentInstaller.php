@@ -1,9 +1,9 @@
 <?php
 
-/**
+/*
  * This file is part of the Contao components installer.
  *
- * Copyright (c) 2005-2015 Leo Feyer
+ * Copyright (c) 2014-2015 Leo Feyer
  *
  * @license LGPL-3.0+
  */
@@ -21,15 +21,15 @@ use Composer\Package\PackageInterface;
 class ComponentInstaller extends LibraryInstaller
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function supports($packageType)
     {
-      return 'contao-component' === $packageType;
+        return 'contao-component' === $packageType;
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getInstallPath(PackageInterface $package)
     {
