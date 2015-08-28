@@ -25,7 +25,5 @@
     },
     "extra": {
         "class": "Contao\\Composer\\ComponentInstaller"
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    }
 }
