@@ -34,7 +34,7 @@ class ComponentInstaller extends LibraryInstaller
     public function getInstallPath(PackageInterface $package)
     {
         $config       = $this->composer->getConfig();
-        $componentDir = $config->has('component-dir') ? $config->get('component-dir') : 'components';
+        $componentDir = $config->has('component-dir') ? $config->get('component-dir') : 'vendor/contao-components';
 
         return $componentDir . '/' . basename($package->getPrettyName());
     }
