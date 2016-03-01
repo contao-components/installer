@@ -1,6 +1,6 @@
 {
     "name": "contao-components/installer",
-    "type": "composer-installer",
+    "type": "composer-plugin",
     "description": "Contao components installer",
     "license": "LGPL-3.0+",
     "authors": [
