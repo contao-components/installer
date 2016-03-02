@@ -8,23 +8,22 @@
  * @license LGPL-3.0+
  */
 
-namespace Contao\Composer\Test;
+namespace Contao\ComponentsInstaller\Test\Composer;
 
-use Composer\Composer;
-use Composer\Config;
 use Composer\IO\NullIO;
 use Composer\Package\Package;
-use Contao\Composer\ComponentInstaller;
+use Contao\ComponentsInstaller\Composer\Installer;
+use Contao\ComponentsInstaller\Test\TestCase;
 
 /**
- * Tests the ComponentInstaller class.
+ * Tests the Installer class.
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class ComponentInstallerTest extends \PHPUnit_Framework_TestCase
+class InstallerTest extends TestCase
 {
     /**
-     * @var ComponentInstaller
+     * @var Installer
      */
     protected $installer;
 
@@ -33,21 +32,7 @@ class ComponentInstallerTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $config = new Config();
-
-        $config->merge(
-            [
-                'config' => [
-                    'vendor-dir'    => 'vendor',
-                    'component-dir' => 'assets',
-                ],
-            ]
-        );
-
-        $composer = new Composer();
-        $composer->setConfig($config);
-
-        $this->installer = new ComponentInstaller(new NullIO(), $composer);
+        $this->installer = new Installer(new NullIO(), $this->getComposer(), 'contao-component');
     }
 
     /**
@@ -55,7 +40,7 @@ class ComponentInstallerTest extends \PHPUnit_Framework_TestCase
      */
     public function testInstantiation()
     {
-        $this->assertInstanceOf('Contao\Composer\ComponentInstaller', $this->installer);
+        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\Installer', $this->installer);
     }
 
     /**

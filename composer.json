@@ -14,16 +14,16 @@
         "composer-plugin-api": "~1.0"
     },
     "require-dev": {
-        "composer/composer": "~1.0",
+        "composer/composer": "~1.0@alpha",
         "fabpot/php-cs-fixer": "~1.8",
         "phpunit/phpunit": "~4.5"
     },
     "autoload": {
         "psr-4": {
-            "Contao\\Composer\\": "src/"
+            "Contao\\ComponentsInstaller\\": "src/"
         }
     },
     "extra": {
-        "class": "Contao\\Composer\\ComponentInstaller"
+        "class": "Contao\\ComponentsInstaller\\Composer\\Plugin"
     }
 }

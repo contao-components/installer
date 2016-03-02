@@ -8,7 +8,7 @@
  * @license LGPL-3.0+
  */
 
-namespace Contao\Composer;
+namespace Contao\ComponentsInstaller\Composer;
 
 use Composer\Installer\LibraryInstaller;
 use Composer\Package\PackageInterface;
@@ -18,22 +18,14 @@ use Composer\Package\PackageInterface;
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class ComponentInstaller extends LibraryInstaller
+class Installer extends LibraryInstaller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function supports($packageType)
-    {
-        return 'contao-component' === $packageType;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function getInstallPath(PackageInterface $package)
     {
-        $config       = $this->composer->getConfig();
+        $config = $this->composer->getConfig();
         $componentDir = $config->has('component-dir') ? $config->get('component-dir') : 'vendor/contao-components';
 
         return $componentDir . '/' . basename($package->getPrettyName());
