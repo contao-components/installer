@@ -10,20 +10,18 @@
 
 namespace Contao\ComponentsInstaller\Test\Composer;
 
-use Composer\IO\NullIO;
-use Composer\Package\Package;
-use Contao\ComponentsInstaller\Composer\Installer;
+use Contao\ComponentsInstaller\Composer\NoopInstaller;
 use Contao\ComponentsInstaller\Test\TestCase;
 
 /**
- * Tests the Installer class.
+ * Tests the NoopInstaller class.
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class InstallerTest extends TestCase
+class NoopInstallerTest extends TestCase
 {
     /**
-     * @var Installer
+     * @var NoopInstaller
      */
     protected $installer;
 
@@ -32,7 +30,7 @@ class InstallerTest extends TestCase
      */
     protected function setUp()
     {
-        $this->installer = new Installer(new NullIO(), $this->getComposer(), 'contao-component');
+        $this->installer = new NoopInstaller();
     }
 
     /**
@@ -40,7 +38,7 @@ class InstallerTest extends TestCase
      */
     public function testInstantiation()
     {
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\Installer', $this->installer);
+        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $this->installer);
     }
 
     /**
@@ -49,15 +47,6 @@ class InstallerTest extends TestCase
     public function testSupports()
     {
         $this->assertTrue($this->installer->supports('contao-component'));
-    }
-
-    /**
-     * Tests the getInstallPath() method.
-     */
-    public function testGetInstallPath()
-    {
-        $package = new Package('contao-components/installer', '~1.0', '1.0.0');
-
-        $this->assertEquals('assets/installer', $this->installer->getInstallPath($package));
+        $this->assertFalse($this->installer->supports('symfony-bundle'));
     }
 }

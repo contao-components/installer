@@ -26,6 +26,12 @@ class Plugin implements PluginInterface
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        $composer->getInstallationManager()->addInstaller(new Installer($io, $composer, 'contao-component'));
+        if (!$composer->getConfig()->has('component-dir')) {
+            $installer = new NoopInstaller();
+        } else {
+            $installer = new LibraryInstaller($io, $composer, 'contao-component');
+        }
+
+        $composer->getInstallationManager()->addInstaller($installer);
     }
 }

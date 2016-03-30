@@ -7,7 +7,7 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Contao Components Installer Test Suite">
+        <testsuite>
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

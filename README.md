@@ -1,9 +1,9 @@
 Contao components installer
 ===========================
 
-[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/build.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
-[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/quality-score.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
-[![](https://scrutinizer-ci.com/g/contao-components/installer/badges/coverage.png)](https://scrutinizer-ci.com/g/contao-components/installer/)
+[![](https://img.shields.io/travis/contao-components/installer/master.svg?style=flat-square)](https://travis-ci.org/contao-components/installer/)
+[![](https://img.shields.io/scrutinizer/g/contao-components/installer/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/contao-components/installer/)
+[![](https://img.shields.io/coveralls/contao-components/installer/master.svg?style=flat-square)](https://coveralls.io/github/contao-components/installer)
 
 Contao is an Open Source PHP Content Management System for people who want a
 professional website that is easy to maintain. Visit the [project website][1]

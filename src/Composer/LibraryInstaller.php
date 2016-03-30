@@ -10,7 +10,7 @@
 
 namespace Contao\ComponentsInstaller\Composer;
 
-use Composer\Installer\LibraryInstaller;
+use Composer\Installer\LibraryInstaller as ComposerLibraryInstaller;
 use Composer\Package\PackageInterface;
 
 /**
@@ -18,16 +18,13 @@ use Composer\Package\PackageInterface;
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class Installer extends LibraryInstaller
+class LibraryInstaller extends ComposerLibraryInstaller
 {
     /**
      * {@inheritdoc}
      */
     public function getInstallPath(PackageInterface $package)
     {
-        $config = $this->composer->getConfig();
-        $componentDir = $config->has('component-dir') ? $config->get('component-dir') : 'vendor/contao-components';
-
-        return $componentDir . '/' . basename($package->getPrettyName());
+        return $this->composer->getConfig()->get('component-dir') . '/' . basename($package->getPrettyName());
     }
 }

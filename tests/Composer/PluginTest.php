@@ -10,6 +10,7 @@
 
 namespace Contao\ComponentsInstaller\Test\Composer;
 
+use Composer\Config;
 use Composer\IO\NullIO;
 use Contao\ComponentsInstaller\Composer\Plugin;
 use Contao\ComponentsInstaller\Test\TestCase;
@@ -40,7 +41,34 @@ class PluginTest extends TestCase
         $plugin->activate($composer, new NullIO());
 
         $this->assertInstanceOf(
-            'Contao\ComponentsInstaller\Composer\Installer',
+            'Contao\ComponentsInstaller\Composer\LibraryInstaller',
+            $composer->getInstallationManager()->getInstaller('contao-component')
+        );
+    }
+
+    /**
+     * Tests the activate() method without a component-dir.
+     */
+    public function testActivateWithoutComponentDir()
+    {
+        $config = new Config();
+
+        $config->merge(
+            [
+                'config' => [
+                    'vendor-dir' => 'vendor',
+                ],
+            ]
+        );
+
+        $composer = $this->getComposer();
+        $composer->setConfig($config);
+
+        $plugin = new Plugin();
+        $plugin->activate($composer, new NullIO());
+
+        $this->assertInstanceOf(
+            'Contao\ComponentsInstaller\Composer\NoopInstaller',
             $composer->getInstallationManager()->getInstaller('contao-component')
         );
     }
