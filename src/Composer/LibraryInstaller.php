@@ -25,6 +25,6 @@ class LibraryInstaller extends ComposerLibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->composer->getConfig()->get('component-dir') . '/' . basename($package->getPrettyName());
+        return $this->composer->getConfig()->get('component-dir').'/'.basename($package->getPrettyName());
     }
 }
