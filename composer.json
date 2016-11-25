@@ -14,10 +14,10 @@
         "composer-plugin-api": "~1.0"
     },
     "require-dev": {
-        "composer/composer": "~1.0@alpha",
+        "composer/composer": "~1.0",
         "friendsofphp/php-cs-fixer": "~1.8",
         "phpunit/phpunit": "~4.5",
-        "satooshi/php-coveralls": "~0.6"
+        "satooshi/php-coveralls": "~1.0"
     },
     "autoload": {
         "psr-4": {
