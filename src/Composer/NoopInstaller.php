@@ -3,7 +3,7 @@
 /*
  * This file is part of the Contao components installer.
  *
- * Copyright (c) 2014-2016 Leo Feyer
+ * Copyright (c) 2014-2017 Leo Feyer
  *
  * @license LGPL-3.0+
  */
