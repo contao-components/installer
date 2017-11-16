@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -14,11 +14,6 @@ use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
-/**
- * Adds the components installer to Composer.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 class Plugin implements PluginInterface
 {
     /**

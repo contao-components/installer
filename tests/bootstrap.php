@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *

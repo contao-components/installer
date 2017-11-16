@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -15,41 +15,26 @@ use Composer\IO\NullIO;
 use Contao\ComponentsInstaller\Composer\Plugin;
 use Contao\ComponentsInstaller\Test\TestCase;
 
-/**
- * Tests the Plugin class.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 class PluginTest extends TestCase
 {
-    /**
-     * Tests the object instantiation.
-     */
-    public function testInstantiation()
+    public function testCanBeInstantiated()
     {
         $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\Plugin', new Plugin());
     }
 
-    /**
-     * Tests the activate() method.
-     */
-    public function testActivate()
+    public function testAddsTheInstallerUponActivation()
     {
         $composer = $this->getComposer();
 
         $plugin = new Plugin();
         $plugin->activate($composer, new NullIO());
 
-        $this->assertInstanceOf(
-            'Contao\ComponentsInstaller\Composer\LibraryInstaller',
-            $composer->getInstallationManager()->getInstaller('contao-component')
-        );
+        $installer = $composer->getInstallationManager()->getInstaller('contao-component');
+
+        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\LibraryInstaller', $installer);
     }
 
-    /**
-     * Tests the activate() method without a component-dir.
-     */
-    public function testActivateWithoutComponentDir()
+    public function testAddsTheNoopInstallerIfThereIsNoComponentDir()
     {
         $config = new Config();
 
@@ -67,9 +52,8 @@ class PluginTest extends TestCase
         $plugin = new Plugin();
         $plugin->activate($composer, new NullIO());
 
-        $this->assertInstanceOf(
-            'Contao\ComponentsInstaller\Composer\NoopInstaller',
-            $composer->getInstallationManager()->getInstaller('contao-component')
-        );
+        $installer = $composer->getInstallationManager()->getInstaller('contao-component');
+
+        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $installer);
     }
 }

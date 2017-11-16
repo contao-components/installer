@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -14,17 +14,12 @@ use Composer\Composer;
 use Composer\Config;
 use Composer\Installer\InstallationManager;
 
-/**
- * Abstract TestCase class.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
     /**
      * Returns a Composer object.
      *
-     * @return Composer The Composer object
+     * @return Composer
      */
     protected function getComposer()
     {

@@ -1,10 +1,6 @@
-# IDEs
-.buildpath
-.project
-.settings/
-.build/
-.idea/
-nbproject/
-
-# Vendor
+# Composer
+/composer.lock
 /vendor/
+
+# PhpUnit
+/phpunit.xml

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -12,11 +12,6 @@ namespace Contao\ComponentsInstaller\Composer;
 
 use Composer\Installer\NoopInstaller as ComposerNoopInstaller;
 
-/**
- * Overrides the install path for Contao components.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 class NoopInstaller extends ComposerNoopInstaller
 {
     /**

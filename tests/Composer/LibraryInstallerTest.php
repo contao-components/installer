@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -15,11 +15,6 @@ use Composer\Package\Package;
 use Contao\ComponentsInstaller\Composer\LibraryInstaller;
 use Contao\ComponentsInstaller\Test\TestCase;
 
-/**
- * Tests the LibraryInstaller class.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 class LibraryInstallerTest extends TestCase
 {
     /**
@@ -35,30 +30,21 @@ class LibraryInstallerTest extends TestCase
         $this->installer = new LibraryInstaller(new NullIO(), $this->getComposer(), 'contao-component');
     }
 
-    /**
-     * Tests the object instantiation.
-     */
-    public function testInstantiation()
+    public function testCanBeInstantiated()
     {
         $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\LibraryInstaller', $this->installer);
     }
 
-    /**
-     * Tests the supports() method.
-     */
-    public function testSupports()
+    public function testSupportsContaoComponents()
     {
         $this->assertTrue($this->installer->supports('contao-component'));
         $this->assertFalse($this->installer->supports('symfony-bundle'));
     }
 
-    /**
-     * Tests the getInstallPath() method.
-     */
-    public function testGetInstallPath()
+    public function testReturnsTheInstallPath()
     {
-        $package = new Package('contao-components/installer', '~1.0', '1.0.0');
+        $package = new Package('contao-components/installer', '^1.0', '1.0.0');
 
-        $this->assertEquals('assets/installer', $this->installer->getInstallPath($package));
+        $this->assertSame('assets/installer', $this->installer->getInstallPath($package));
     }
 }

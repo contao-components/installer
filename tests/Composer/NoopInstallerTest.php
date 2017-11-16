@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Contao components installer.
+ * This file is part of Contao.
  *
  * Copyright (c) 2014-2017 Leo Feyer
  *
@@ -13,11 +13,6 @@ namespace Contao\ComponentsInstaller\Test\Composer;
 use Contao\ComponentsInstaller\Composer\NoopInstaller;
 use Contao\ComponentsInstaller\Test\TestCase;
 
-/**
- * Tests the NoopInstaller class.
- *
- * @author Leo Feyer <https://github.com/leofeyer>
- */
 class NoopInstallerTest extends TestCase
 {
     /**
@@ -33,18 +28,12 @@ class NoopInstallerTest extends TestCase
         $this->installer = new NoopInstaller();
     }
 
-    /**
-     * Tests the object instantiation.
-     */
-    public function testInstantiation()
+    public function testCanBeInstantiated()
     {
         $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $this->installer);
     }
 
-    /**
-     * Tests the supports() method.
-     */
-    public function testSupports()
+    public function testSupportsContaoComponents()
     {
         $this->assertTrue($this->installer->supports('contao-component'));
         $this->assertFalse($this->installer->supports('symfony-bundle'));

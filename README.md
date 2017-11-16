@@ -2,7 +2,6 @@ Contao components installer
 ===========================
 
 [![](https://img.shields.io/travis/contao-components/installer/master.svg?style=flat-square)](https://travis-ci.org/contao-components/installer/)
-[![](https://img.shields.io/scrutinizer/g/contao-components/installer/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/contao-components/installer/)
 [![](https://img.shields.io/coveralls/contao-components/installer/master.svg?style=flat-square)](https://coveralls.io/github/contao-components/installer)
 [![](https://img.shields.io/packagist/v/contao-components/installer.svg?style=flat-square)](https://packagist.org/packages/contao-components/installer)
 [![](https://img.shields.io/packagist/dt/contao-components/installer.svg?style=flat-square)](https://packagist.org/packages/contao-components/installer)
@@ -28,9 +27,9 @@ To create a [Contao component][2], add the following to your `composer.json`:
 {
     "name": "vendor/name",
     "type": "contao-component",
-    "license": "LGPL-3.0+"
+    "license": "LGPL-3.0+",
     "require": {
-        "contao-components/installer": "~1.0"
+        "contao-components/installer": "^1.0"
     }
 }
 ```
