@@ -4,10 +4,9 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite>
+        <testsuite name="Contao Component Installer">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
