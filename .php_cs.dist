@@ -5,9 +5,9 @@ $date = date('Y');
 $header = <<<EOF
 This file is part of Contao.
 
-Copyright (c) 2014-$date Leo Feyer
+(c) Leo Feyer
 
-@license LGPL-3.0+
+@license LGPL-3.0-or-later
 EOF;
 
 $finder = PhpCsFixer\Finder::create()

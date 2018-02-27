@@ -2,7 +2,7 @@
     "name": "contao-components/installer",
     "type": "composer-plugin",
     "description": "Contao components installer",
-    "license": "LGPL-3.0+",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Leo Feyer",
@@ -15,9 +15,12 @@
     },
     "require-dev": {
         "composer/composer": "^1.0",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "phpunit/phpunit": "^4.5",
+        "friendsofphp/php-cs-fixer": "^2.6",
+        "phpunit/phpunit": "^5.7.26",
         "satooshi/php-coveralls": "^1.0"
+    },
+    "extra": {
+        "class": "Contao\\ComponentsInstaller\\Composer\\Plugin"
     },
     "autoload": {
         "psr-4": {
@@ -28,8 +31,5 @@
         "psr-4": {
             "Contao\\ComponentsInstaller\\Test\\": "tests/"
         }
-    },
-    "extra": {
-        "class": "Contao\\ComponentsInstaller\\Composer\\Plugin"
     }
 }

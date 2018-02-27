@@ -27,7 +27,7 @@ To create a [Contao component][2], add the following to your `composer.json`:
 {
     "name": "vendor/name",
     "type": "contao-component",
-    "license": "LGPL-3.0+",
+    "license": "LGPL-3.0-or-later",
     "require": {
         "contao-components/installer": "^1.0"
     }
