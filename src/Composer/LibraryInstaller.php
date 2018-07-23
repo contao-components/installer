@@ -20,6 +20,26 @@ class LibraryInstaller extends ComposerLibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        return $this->composer->getConfig()->get('component-dir').'/'.basename($package->getPrettyName());
+        return $this->getComponentDir().'/'.basename($package->getPrettyName());
+    }
+
+    /**
+     * @throws \RuntimeException
+     *
+     * @return string
+     */
+    private function getComponentDir()
+    {
+        $extra = $this->composer->getPackage()->getExtra();
+
+        if (isset($extra['contao-component-dir'])) {
+            return $extra['contao-component-dir'];
+        }
+
+        if ($this->composer->getConfig()->has('component-dir')) {
+            return $this->composer->getConfig()->get('component-dir');
+        }
+
+        throw new \RuntimeException('The Contao component directory is not defined!');
     }
 }

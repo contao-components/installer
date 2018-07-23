@@ -13,6 +13,7 @@ namespace Contao\ComponentsInstaller\Test;
 use Composer\Composer;
 use Composer\Config;
 use Composer\Installer\InstallationManager;
+use Composer\Package\RootPackage;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -29,14 +30,17 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             [
                 'config' => [
                     'vendor-dir' => 'vendor',
-                    'component-dir' => 'assets',
                 ],
             ]
         );
 
+        $package = new RootPackage('foobar', '1.0.0.0', '1.0.0');
+        $package->setExtra(['contao-component-dir' => 'assets']);
+
         $composer = new Composer();
         $composer->setInstallationManager(new InstallationManager());
         $composer->setConfig($config);
+        $composer->setPackage($package);
 
         return $composer;
     }

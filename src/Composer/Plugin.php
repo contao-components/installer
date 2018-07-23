@@ -21,12 +21,32 @@ class Plugin implements PluginInterface
      */
     public function activate(Composer $composer, IOInterface $io)
     {
-        if (!$composer->getConfig()->has('component-dir')) {
-            $installer = new NoopInstaller();
-        } else {
+        if ($componentDir = $this->hasComponentDir($composer, $io)) {
             $installer = new LibraryInstaller($io, $composer, 'contao-component');
+        } else {
+            $installer = new NoopInstaller();
         }
 
         $composer->getInstallationManager()->addInstaller($installer);
+    }
+
+    /**
+     * @return bool
+     */
+    private function hasComponentDir(Composer $composer, IOInterface $io)
+    {
+        $extra = $composer->getPackage()->getExtra();
+
+        if (isset($extra['contao-component-dir'])) {
+            return true;
+        }
+
+        if ($composer->getConfig()->has('component-dir')) {
+            $io->write('<warning>Using config.component-dir has been deprecated. Please use extra.contao-component-dir instead.</warning>');
+
+            return true;
+        }
+
+        return false;
     }
 }
