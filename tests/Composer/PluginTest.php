@@ -49,7 +49,7 @@ class PluginTest extends TestCase
         $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $installer);
     }
 
-    public function testA()
+    public function testShowsAWarningIfTheOldConfigurationIsUsed()
     {
         $config = new Config();
         $config->merge(
