@@ -52,4 +52,4 @@ file of your project:
 
 
 [1]: https://contao.org
-[2]: https://github.com/contao/contao-components
+[2]: https://github.com/contao-components
