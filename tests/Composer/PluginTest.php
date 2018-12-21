@@ -14,16 +14,13 @@ use Composer\Config;
 use Composer\IO\ConsoleIO;
 use Composer\IO\NullIO;
 use Composer\Package\RootPackage;
+use Contao\ComponentsInstaller\Composer\LibraryInstaller;
+use Contao\ComponentsInstaller\Composer\NoopInstaller;
 use Contao\ComponentsInstaller\Composer\Plugin;
 use Contao\ComponentsInstaller\Test\TestCase;
 
 class PluginTest extends TestCase
 {
-    public function testCanBeInstantiated()
-    {
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\Plugin', new Plugin());
-    }
-
     public function testAddsTheInstallerUponActivation()
     {
         $composer = $this->getComposer();
@@ -33,7 +30,7 @@ class PluginTest extends TestCase
 
         $installer = $composer->getInstallationManager()->getInstaller('contao-component');
 
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\LibraryInstaller', $installer);
+        $this->assertInstanceOf(LibraryInstaller::class, $installer);
     }
 
     public function testAddsTheNoopInstallerIfThereIsNoComponentDir()
@@ -46,7 +43,7 @@ class PluginTest extends TestCase
 
         $installer = $composer->getInstallationManager()->getInstaller('contao-component');
 
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $installer);
+        $this->assertInstanceOf(NoopInstaller::class, $installer);
     }
 
     public function testShowsAWarningIfTheOldConfigurationIsUsed()
@@ -77,6 +74,30 @@ class PluginTest extends TestCase
 
         $installer = $composer->getInstallationManager()->getInstaller('contao-component');
 
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\LibraryInstaller', $installer);
+        $this->assertInstanceOf(LibraryInstaller::class, $installer);
+    }
+
+    public function testFailsIfTheNewConfigurationIsUsedInTheWrongSection()
+    {
+        $config = new Config();
+        $config->merge(
+            [
+                'config' => [
+                    'contao-component-dir' => 'assets',
+                    'vendor-dir' => 'vendor',
+                ],
+            ]
+        );
+
+        $composer = $this->getComposer();
+        $composer->setConfig($config);
+        $composer->getPackage()->setExtra([]);
+
+        $plugin = new Plugin();
+
+        $this->expectException('RuntimeException');
+        $this->expectExceptionMessage('Found the "contao-component-dir" key in the "config" section. Did you mean to put it into the "extra" section?');
+
+        $plugin->activate($composer, $this->createMock(ConsoleIO::class));
     }
 }

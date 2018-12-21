@@ -41,12 +41,18 @@ class Plugin implements PluginInterface
             return true;
         }
 
-        if ($composer->getConfig()->has('component-dir')) {
-            $io->write('<warning>Using config.component-dir has been deprecated. Please use extra.contao-component-dir instead.</warning>');
+        $config = $composer->getConfig();
 
-            return true;
+        if ($config->has('contao-component-dir')) {
+            throw new \RuntimeException('Found the "contao-component-dir" key in the "config" section. Did you mean to put it into the "extra" section?');
         }
 
-        return false;
+        if (!$config->has('component-dir')) {
+            return false;
+        }
+
+        $io->write('<warning>Using config.component-dir has been deprecated. Please use extra.contao-component-dir instead.</warning>');
+
+        return true;
     }
 }

@@ -30,11 +30,6 @@ class LibraryInstallerTest extends TestCase
         $this->installer = new LibraryInstaller(new NullIO(), $this->getComposer(), 'contao-component');
     }
 
-    public function testCanBeInstantiated()
-    {
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\LibraryInstaller', $this->installer);
-    }
-
     public function testSupportsContaoComponents()
     {
         $this->assertTrue($this->installer->supports('contao-component'));

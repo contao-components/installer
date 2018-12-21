@@ -28,11 +28,6 @@ class NoopInstallerTest extends TestCase
         $this->installer = new NoopInstaller();
     }
 
-    public function testCanBeInstantiated()
-    {
-        $this->assertInstanceOf('Contao\ComponentsInstaller\Composer\NoopInstaller', $this->installer);
-    }
-
     public function testSupportsContaoComponents()
     {
         $this->assertTrue($this->installer->supports('contao-component'));

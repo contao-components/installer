@@ -1,8 +1,6 @@
 Contao components installer
 ===========================
 
-[![](https://img.shields.io/travis/contao-components/installer/master.svg?style=flat-square)](https://travis-ci.org/contao-components/installer/)
-[![](https://img.shields.io/coveralls/contao-components/installer/master.svg?style=flat-square)](https://coveralls.io/github/contao-components/installer)
 [![](https://img.shields.io/packagist/v/contao-components/installer.svg?style=flat-square)](https://packagist.org/packages/contao-components/installer)
 [![](https://img.shields.io/packagist/dt/contao-components/installer.svg?style=flat-square)](https://packagist.org/packages/contao-components/installer)
 
@@ -44,8 +42,8 @@ file of your project:
 
 ```json
 {
-    "config": {
-        "component-dir": "assets"
+    "extra": {
+        "contao-component-dir": "assets"
     }
 }
 ```
