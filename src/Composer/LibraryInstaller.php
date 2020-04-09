@@ -15,17 +15,12 @@ use Composer\Package\PackageInterface;
 
 class LibraryInstaller extends ComposerLibraryInstaller
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getInstallPath(PackageInterface $package)
     {
         return $this->getComponentDir().'/'.basename($package->getPrettyName());
     }
 
     /**
-     * @throws \RuntimeException
-     *
      * @return string
      */
     private function getComponentDir()

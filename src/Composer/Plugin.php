@@ -11,23 +11,35 @@
 namespace Contao\ComponentsInstaller\Composer;
 
 use Composer\Composer;
+use Composer\Installer\InstallerInterface;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 
 class Plugin implements PluginInterface
 {
     /**
-     * {@inheritdoc}
+     * @var InstallerInterface
      */
+    private $installer;
+
     public function activate(Composer $composer, IOInterface $io)
     {
         if ($componentDir = $this->hasComponentDir($composer, $io)) {
-            $installer = new LibraryInstaller($io, $composer, 'contao-component');
+            $this->installer = new LibraryInstaller($io, $composer, 'contao-component');
         } else {
-            $installer = new NoopInstaller();
+            $this->installer = new NoopInstaller();
         }
 
-        $composer->getInstallationManager()->addInstaller($installer);
+        $composer->getInstallationManager()->addInstaller($this->installer);
+    }
+
+    public function deactivate(Composer $composer, IOInterface $io)
+    {
+        $composer->getInstallationManager()->removeInstaller($this->installer);
+    }
+
+    public function uninstall(Composer $composer, IOInterface $io)
+    {
     }
 
     /**

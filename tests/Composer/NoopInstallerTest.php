@@ -15,22 +15,11 @@ use Contao\ComponentsInstaller\Test\TestCase;
 
 class NoopInstallerTest extends TestCase
 {
-    /**
-     * @var NoopInstaller
-     */
-    protected $installer;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp()
-    {
-        $this->installer = new NoopInstaller();
-    }
-
     public function testSupportsContaoComponents()
     {
-        $this->assertTrue($this->installer->supports('contao-component'));
-        $this->assertFalse($this->installer->supports('symfony-bundle'));
+        $installer = new NoopInstaller();
+
+        $this->assertTrue($installer->supports('contao-component'));
+        $this->assertFalse($installer->supports('symfony-bundle'));
     }
 }

@@ -21,7 +21,7 @@ use Contao\ComponentsInstaller\Test\TestCase;
 
 class PluginTest extends TestCase
 {
-    public function testAddsTheInstallerUponActivation()
+    public function testAddsAndRemovesTheInstaller()
     {
         $composer = $this->getComposer();
 
@@ -31,6 +31,13 @@ class PluginTest extends TestCase
         $installer = $composer->getInstallationManager()->getInstaller('contao-component');
 
         $this->assertInstanceOf(LibraryInstaller::class, $installer);
+
+        $plugin->deactivate($composer, new NullIO());
+
+        $this->expectException('InvalidArgumentException');
+        $this->expectExceptionMessage('Unknown installer type: contao-component');
+
+        $composer->getInstallationManager()->getInstaller('contao-component');
     }
 
     public function testAddsTheNoopInstallerIfThereIsNoComponentDir()

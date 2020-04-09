@@ -22,9 +22,6 @@ class LibraryInstallerTest extends TestCase
      */
     protected $installer;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp()
     {
         $this->installer = new LibraryInstaller(new NullIO(), $this->getComposer(), 'contao-component');
