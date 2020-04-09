@@ -14,9 +14,6 @@ use Composer\Installer\NoopInstaller as ComposerNoopInstaller;
 
 class NoopInstaller extends ComposerNoopInstaller
 {
-    /**
-     * {@inheritdoc}
-     */
     public function supports($packageType)
     {
         return 'contao-component' === $packageType;
