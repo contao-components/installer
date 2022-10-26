@@ -33,12 +33,11 @@ To create a [Contao component][2], add the following to your `composer.json`:
 ```
 
 
-Component directory
--------------------
+Components directory
+--------------------
 
-By default, the components will be installed into a `components/` directory.
-To change the installation directory, add the following to the `composer.json`
-file of your project:
+Note that the components will only be installed if you specify an components
+directory in the `composer.json` file of your project:
 
 ```json
 {
